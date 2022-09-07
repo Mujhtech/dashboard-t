@@ -45,7 +45,7 @@ export default function Sidebar({
               </div>
               <div className="flex items-center justify-center h-auto pt-5 pb-4 overflow-y-auto">
                 <img
-                  src="/mainstack.svg"
+                  src="mainstack.svg"
                   alt="Mainstack"
                   width={40}
                   height={40}
@@ -88,7 +88,7 @@ export default function Sidebar({
             <div className="flex-1 flex flex-col pt-0 pb-0 md:pt-5 md:pb-4 overflow-y-auto">
               <div className="px-2 md:px-4">
                 <img
-                  src="/mainstack.svg"
+                  src="mainstack.svg"
                   alt="Mainstack"
                   width={40}
                   height={40}
