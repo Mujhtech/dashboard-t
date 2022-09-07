@@ -1,25 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <div className="px-4 sm:px-6  py-4 lg:py-6 bg-transparent bg-opacity-10">
+        <h1 className="font-semibold">Dashboard</h1>
+      </div>
+      <div className="px-4 sm:px-6 flex-1 overflow-y-auto">
+        <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-col">
+            <h1 className="text-lg font-semibold">
+              Good morning, Blessing ⛅️
+            </h1>
+            <p className="text-sm font-normal">
+              Check out your dashboard summary.
+            </p>
+          </div>
+          <a href="#" className="text-primary text-sm">
+            View analytics
+          </a>
+        </div>
+        <div className="mt-4 flex flex-row space-x-3">
+          <button className="border border-gray-400 bg-white px-3 py-2 rounded-full">
+            1 Day
+          </button>
+          <button className="border border-gray-400 bg-white px-3 py-2 rounded-full">
+            2 Days
+          </button>
+          <button className="border border-gray-400 bg-white px-3 py-2 rounded-full">
+            7 Days
+          </button>
+          <button className="border border-gray-400 bg-white px-3 py-2 rounded-full">
+            30 Days
+          </button>
+          <button className="border border-primary text-primary bg-orange px-3 py-2 rounded-full">
+            All time
+          </button>
+          <button className="border border-gray-400 bg-white px-3 py-2 rounded-full">
+            Custom Date
+          </button>
+        </div>
+        <div className="mt-7 border border-gray-400 p-4 rounded-md flex flex-col">
+          <div className="mb-8 flex flex-row justify-between items-center">
+            <div className="flex flex-col">
+              <h1 className="font-semibold">Page views</h1>
+              <p className="text-sm font-normal">All time</p>
+            </div>
+
+            <img src="info.svg" width={15} height={15} alt="Info" />
+          </div>
+          <h1 className="font-bold text-4xl">500</h1>
+        </div>
+      </div>
+    </Layout>
   );
 }
 
