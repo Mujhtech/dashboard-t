@@ -5,32 +5,11 @@ import { chartTheme } from "../../chart-theme";
 import * as echarts from "echarts";
 
 type Props = {
-  options: any;
+  name: string;
+  datas: any;
 };
 
-export default function Graph({ options }: Props) {
-  let base = +new Date(2016, 9, 3);
-  let oneDay = 24 * 3600 * 1000;
-  let valueBase = Math.random() * 300;
-  let valueBase2 = Math.random() * 50;
-  let data = [];
-  let data2 = [];
-
-  for (var i = 1; i < 10; i++) {
-    var now = new Date((base += oneDay));
-    var dayStr = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join(
-      "-"
-    );
-
-    valueBase = Math.round((Math.random() - 0.5) * 20 + valueBase);
-    valueBase <= 0 && (valueBase = Math.random() * 300);
-    data.push([dayStr, valueBase]);
-
-    valueBase2 = Math.round((Math.random() - 0.5) * 20 + valueBase2);
-    valueBase2 <= 0 && (valueBase2 = Math.random() * 50);
-    data2.push([dayStr, valueBase2]);
-  }
-
+export default function Graph({ name, datas }: Props) {
   let option = {
     // title: {
     //   left: "center",
@@ -40,12 +19,12 @@ export default function Graph({ options }: Props) {
       top: "bottom",
       data: ["Intention"],
     },
-    tooltip: {
-      triggerOn: "none",
-      position: function (pt: any) {
-        return [pt[0], 130];
-      },
-    },
+    // tooltip: {
+    //   triggerOn: "none",
+    //   position: function (pt: any) {
+    //     return [pt[0], 130];
+    //   },
+    // },
     // toolbox: {
     //   left: "center",
     //   itemSize: 25,
@@ -110,7 +89,7 @@ export default function Graph({ options }: Props) {
     // ],
     series: [
       {
-        name: "Fake Data",
+        name: name,
         type: "line",
         smooth: true,
         symbol: "circle",
@@ -132,7 +111,7 @@ export default function Graph({ options }: Props) {
             },
           ]),
         },
-        data: data,
+        data: datas,
       },
     ],
   };
