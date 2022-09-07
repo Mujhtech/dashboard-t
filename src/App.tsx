@@ -1,11 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
 import Graph from "./components/charts/Graph";
 import PieChart from "./components/charts/Piechart";
 import Layout from "./components/Layout";
 
 function App() {
-  const [data, setData] = useState({
+  const apiData = {
     graph_data: {
       views: {
         "2022-07-31": 1,
@@ -69,27 +67,7 @@ function App() {
         percent: 21,
       },
     ],
-  });
-
-  const fetchData = async () => {
-    try {
-      let res = await axios.get("http://test.api.mainstack.io/");
-      console.log(res);
-      setData(res.data);
-    } catch (e) {
-      //
-    }
   };
-
-  useEffect(() => {
-    if (data == null) {
-      fetchData();
-    }
-  }, []);
-
-  function graphFilter(l: any) {
-    return [Object.keys(l), Object.values(l)];
-  }
 
   function locationFilter(l: any) {
     return { name: l.country, value: l.percent };
@@ -98,8 +76,6 @@ function App() {
   function sourceFilter(l: any) {
     return { name: l.source, value: l.percent };
   }
-
-  console.log(Object.entries(data.graph_data.views));
 
   return (
     <Layout>
@@ -151,7 +127,10 @@ function App() {
           </div>
           <h1 className="font-bold text-4xl">500</h1>
           <div className="my-4">
-            <Graph name="Page views" datas={Object.entries(data.graph_data.views)} />
+            <Graph
+              name="Page views"
+              datas={Object.entries(apiData.graph_data.views)}
+            />
           </div>
         </div>
         <div className="flex flex-row space-x-3">
@@ -165,7 +144,7 @@ function App() {
             <div className="w-full">
               <PieChart
                 name="Top Locations"
-                datas={data.top_locations.map(locationFilter)}
+                datas={apiData.top_locations.map(locationFilter)}
               />
             </div>
           </div>
@@ -179,7 +158,7 @@ function App() {
             <div className="w-full">
               <PieChart
                 name="Top Referral source"
-                datas={data.top_sources.map(sourceFilter)}
+                datas={apiData.top_sources.map(sourceFilter)}
               />
             </div>
           </div>
